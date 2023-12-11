@@ -3,11 +3,10 @@
 import React, { Fragment, useCallback, useEffect, useRef, useState } from 'react'
 import qs from 'qs'
 
-import { Product } from '../../../payload/payload-types'
+import { Category, Product } from '../../../payload/payload-types'
 import type { ArchiveBlockProps } from '../../_blocks/ArchiveBlock/types'
 import { useFilter } from '../../_providers/Filter'
 import { Card } from '../Card'
-import { Gutter } from '../Gutter'
 import { PageRange } from '../PageRange'
 import { Pagination } from '../Pagination'
 
@@ -52,7 +51,7 @@ export const CollectionArchive: React.FC<Props> = props => {
 
   const [results, setResults] = useState<Result>({
     totalDocs: typeof populatedDocsTotal === 'number' ? populatedDocsTotal : 0,
-    docs: populatedDocs?.map(doc => doc.value) || [],
+    docs: (populatedDocs?.map(doc => doc.value) || []) as [],
     page: 1,
     totalPages: 1,
     hasPrevPage: false,
@@ -164,7 +163,7 @@ export const CollectionArchive: React.FC<Props> = props => {
 
         <div className={classes.grid}>
           {results.docs?.map((result, index) => {
-            return <Card relationTo="products" doc={result} showCategories />
+            return <Card key={index} relationTo="products" doc={result} showCategories />
           })}
         </div>
 
