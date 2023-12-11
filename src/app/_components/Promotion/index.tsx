@@ -20,9 +20,9 @@ const Promotion = () => {
       const timeDifference = Math.max(Number(targetDate) - Number(currentTime), 0)
 
       const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24))
-      const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (100 * 60 * 60))
-      const minutes = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (100 * 60))
-      const seconds = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / 1000)
+      const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+      const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60))
+      const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000)
 
       setTime({ days, hours, minutes, seconds })
 
@@ -48,12 +48,10 @@ const Promotion = () => {
         </p>
 
         <ul className={classes.stats}>
-          <li className={classes.statBox}>
-            <StatBox label="Days" value={time.days} />
-            <StatBox label="Hours" value={time.hours} />
-            <StatBox label="Minutes" value={time.minutes} />
-            <StatBox label="Seconds" value={time.seconds} />
-          </li>
+          <StatBox label="Days" value={time.days} />
+          <StatBox label="Hours" value={time.hours} />
+          <StatBox label="Minutes" value={time.minutes} />
+          <StatBox label="Seconds" value={time.seconds} />
         </ul>
       </div>
     </section>
