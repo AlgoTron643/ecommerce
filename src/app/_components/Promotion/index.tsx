@@ -1,5 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
+import Image from 'next/image'
 
 import classes from './index.module.scss'
 
@@ -53,6 +54,9 @@ const Promotion = () => {
           <StatBox label="Minutes" value={time.minutes} />
           <StatBox label="Seconds" value={time.seconds} />
         </ul>
+      </div>
+      <div>
+        <Image src="/assets/images/image-4.svg" alt="promotion" />
       </div>
     </section>
   )
